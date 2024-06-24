@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 // import logo from "../public/favicon (1).ico"
-import logo from "../public/ak_logo4.png"
+import logo from "../public/logo.png"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
@@ -61,15 +61,15 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
             <header className=" body-font fixed w-full  z-10">
                 <div className=" text-gray-600 mx-auto flex flex-wrap  flex-col md:flex-row items-center shadow-xl sticky top-0 bg-white z-10">
                     <a href="/" className="flex title-font p-1 font-medium items-center text-gray-900 mb-4 md:mb-0">
-                        <Image src={logo} alt="" style={{ height: "4rem", width: "6rem" }}></Image>
+                        <Image src={logo} alt="" style={{ height: "4rem", width: "7rem" }}></Image>
 
-                        <span className="ml-3 text-xl " style={{ color: "#F59E0B", fontFamily: "Georgia" }}>KnowledgeHub</span>
+                        <span className="ml-1 text-xl " style={{ color: "#F59E0B", fontFamily: "Georgia" }}>KnowledgeHub</span>
                     </a>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                        <a href="/" className="mr-12 hover:text-gray-900">Dashboard</a>
-                        <a href="/orders" className="mr-12 hover:text-gray-900">Courses</a>
-                        <a href="/contact" className="mr-12 hover:text-gray-900">Contact</a>
-                        <a href="/about" className="mr-12 hover:text-gray-900">About</a>
+                        <a href="/" className="mr-12   hover:text-gray-900" style={{ color: "#F59E0B"}}>Dashboard</a>
+                        <a href="/orders" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>Courses</a>
+                        <a href="/contact" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>Contact</a>
+                        <a href="/about" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>About</a>
                     </nav>
 
                     <a onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} >
@@ -84,7 +84,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
                     >
                         <div className="absolute top-7 right-8 rounded-md px-5 w-50 bg-indigo-500">
                             <ul>
-                                <div className="px-4 py-4 text-sm text-gray-900 dark:text-white " >
+                                <div className="px-4 py-4 text-sm  text-gray-900 dark:text-white " >
                                     <div style={{ fontWeight: "500" }}>{localStorage.getItem('name')}</div>
                                     <div className="font-medium truncate">{localStorage.getItem('email')}</div>
                                 </div>
@@ -103,8 +103,8 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
 
 
                     {!user.value && <Link href='/login'>
-                        <button className="cursor-pointer inline-flex items-center bg-gray-100 border-0 py-4 mr-3 px-4 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" style={{ marginRight: "1rem", fontWeight: "700" }}>Login</button></Link>}
-                    <button onClick={toggleCart} className="cursor-pointer inline-flex items-center bg-gray-100 border-0 py-4 mr-3 px-4 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+                        <button className="cursor-pointer inline-flex items-center  bg-gray-100 border-0 py-4 mr-3 px-4 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" style={{color: "#F59E0B", marginRight: "1rem", fontWeight: "700" }}>Login</button></Link>}
+                    <button onClick={toggleCart} className="cursor-pointer inline-flex items-center bg-gray-100 border-0 py-4 mr-3 px-4 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" style={{ color: "#F59E0B"}}>
                         <i className="fa-solid fa-cart-shopping text-2xl"></i>
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
