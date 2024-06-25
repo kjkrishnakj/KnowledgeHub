@@ -1,8 +1,6 @@
-
 import Course from "../models/Course";
 import Head from "next/head";
 import Image from "next/image";
-
 import Carousel from '../components/Carousel';
 import { useEffect } from "react";
 import Link from "next/link";
@@ -28,7 +26,6 @@ export default function Home({ courses }) {
   }, []);
 // console.log(`$(process.env.JWT_SECRET)`);
 
-
   return (
     <>
       <Head>
@@ -37,25 +34,25 @@ export default function Home({ courses }) {
         <link rel="icon" href="/icon.ico" type="image/x-icon" />
       </Head>
 
-
       <div>
-
-
         <Carousel/>
-
       </div>
-
 
       <hr className=" mx-60  mt-14 border-yellow-500" />
 
-      <section className="text-gray-600  body-font">
-        <div className="container px-5  py-12    mx-auto">
-      <h1 className="text-2xl  font-bold mt-1 mb-2 ">Featured Courses</h1>
-          <div className="grid gap-4 grid-cols-1  md:grid-cols-2 lg:grid-cols-4 justify-center">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-12 mx-auto">
+          <h1 className="text-2xl font-bold mt-1 mb-2">Featured Courses</h1>
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center">
             {courses.map((course) => (
               <Link passHref={true} key={course._id} href={`/product/${course.slug}`}>
-                <div className="border-spacing-2 rounded-lg   border shadow-2xl">
-                  <img src={course.img} alt="" className="w-full rounded-lg h-full object-fill shadow-2xl" style={{ height: "12rem" }} />
+                <div className="group border-spacing-2 rounded-lg border shadow-2xl overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
+                  <img
+                    src={course.img}
+                    alt=""
+                    className="w-full h-full object-fill"
+                    style={{ height: "12rem" }}
+                  />
                   <div className="mt-4">
                     <h2 className="text-gray-900 px-1 title-font text-lg font-medium">{course.title}</h2>
                     <h4 className="text-gray-500 px-1 text-xs tracking-widest title-font mb-1">{course.brand}</h4>
@@ -68,7 +65,8 @@ export default function Home({ courses }) {
           </div>
         </div>
       </section>
-      <hr className=" mx-60  mt-14 border-yellow-500" />
+
+      <hr className=" mx-60 mt-14 border-yellow-500" />
 
       <Plan/>
 

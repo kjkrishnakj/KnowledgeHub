@@ -202,7 +202,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
                   return <li key={k}>
                     <div className="flex flex-col rounded-lg bg-white sm:flex-row">
 
-                      <img src={cart[k].img} alt="" className="m-2 h-24 w-28 rounded-md  object-cover object-center" style={{}}></img>
+                      <img src={cart[k].img} alt="" className="m-2 h-24 w-28 rounded-md  object-fit object-center" style={{}}></img>
 
                       <div className="flex w-full flex-col px-4 py-4">
                         <div className="font-semibold">{cart[k].name}</div>
