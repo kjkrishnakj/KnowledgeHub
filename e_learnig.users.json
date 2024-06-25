@@ -1,0 +1,183 @@
+[{
+  "_id": {
+    "$oid": "65da4e1ef882f01ed10c23e8"
+  },
+  "name": "krishna",
+  "email": "krishnajaswl@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-24T20:14:22.436Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-24T20:14:22.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65db899df882f01ed10c240e"
+  },
+  "name": "kj",
+  "email": "krishnajaswl2004@gmail.com",
+  "password": "U2FsdGVkX189zG4PML8snxjeBR/HcA/O/wnOk40BO6c=",
+  "createdAt": {
+    "$date": "2024-02-25T18:40:29.936Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-25T18:40:29.936Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dc4b874699f36d98c01b96"
+  },
+  "name": "krishna",
+  "email": "krishnajaswlkj@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T08:27:51.711Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T08:27:51.711Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dcb8424699f36d98c01c01"
+  },
+  "name": "wdqwd",
+  "email": "kj123r3rrfdcqwfq@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T16:11:46.814Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T16:11:46.814Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dcb88c4699f36d98c01c04"
+  },
+  "name": "kj",
+  "email": "shivam.raj2022b@vitstudent.ac.in",
+  "password": "123",
+  "createdAt": {
+    "$date": "2024-02-26T16:13:00.188Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T16:13:00.188Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dcb98b4699f36d98c01c12"
+  },
+  "name": "krishna",
+  "email": "k@gmail.com",
+  "password": "323r3",
+  "createdAt": {
+    "$date": "2024-02-26T16:17:15.555Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T16:17:15.555Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dcbd014699f36d98c01c34"
+  },
+  "name": "krishna",
+  "email": "krishna.jaiswal2022@vitstudent.ac.in",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T16:32:01.218Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T16:32:01.218Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dce03e4699f36d98c01c79"
+  },
+  "name": "krishna",
+  "email": "kj1@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T19:02:22.169Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T19:02:22.169Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dce0804699f36d98c01c7b"
+  },
+  "name": "kj",
+  "email": "kj2@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T19:03:28.855Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T19:03:28.855Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dce0bc4699f36d98c01c7d"
+  },
+  "name": "kj",
+  "email": "kj3@gmail.com",
+  "password": "hello",
+  "createdAt": {
+    "$date": "2024-02-26T19:04:28.932Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-26T19:04:28.932Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65df49bf9d83475f11ef39fc"
+  },
+  "name": "qwdqwdqwdqw",
+  "email": "dqwd@gmail.com",
+  "password": "ljebflblwef",
+  "createdAt": {
+    "$date": "2024-02-28T14:57:03.782Z"
+  },
+  "updatedAt": {
+    "$date": "2024-02-28T14:57:03.782Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65eb307649ab3961330813df"
+  },
+  "name": "krishna ",
+  "email": "tanishq@gmail.com",
+  "password": "1234",
+  "address": "b-169 ashiana baghhehjsdlflweflkwefwebfkjbwefljkbwe.fwekfbkwefkwefkwekfwefwehflkjewfe    ",
+  "pincode": "600127",
+  "phone": "8005600190 ",
+  "createdAt": {
+    "$date": "2024-03-08T15:36:22.588Z"
+  },
+  "updatedAt": {
+    "$date": "2024-03-08T15:48:10.186Z"
+  },
+  "__v": 0
+}]

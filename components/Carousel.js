@@ -28,8 +28,8 @@ const Carousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(goToNext, 3000); // Change slide every 3 seconds
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    const interval = setInterval(goToNext, 5000);  
+    return () => clearInterval(interval);  
   }, [currentIndex]);
 
   return (
@@ -52,7 +52,7 @@ const Carousel = () => {
           <button
             key={index}
             type="button"
-            className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'}`}
+            className={`w-3 h-3 z-0 rounded-full ${currentIndex === index ? 'bg-yellow-600' : 'bg-gray-300'}`}
             aria-current={currentIndex === index}
             aria-label={`Slide ${index + 1}`}
             onClick={() => goToSlide(index)}

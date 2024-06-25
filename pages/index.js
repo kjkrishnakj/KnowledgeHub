@@ -7,17 +7,17 @@ import Carousel from '../components/Carousel';
 import { useEffect } from "react";
 import Link from "next/link";
 import mongoose from "mongoose";
+import Plan from "../components/Plan";
 
 export default function Home({ courses }) {
   const fetchCourses = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/getcourses');
-      console.log("hehe");
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error('Error fetching courses:', error);
     }
@@ -26,6 +26,8 @@ export default function Home({ courses }) {
   useEffect(() => {
     fetchCourses();
   }, []);
+// console.log(`$(process.env.JWT_SECRET)`);
+
 
   return (
     <>
@@ -44,9 +46,11 @@ export default function Home({ courses }) {
       </div>
 
 
+      <hr className=" mx-60  mt-14 border-yellow-500" />
 
       <section className="text-gray-600  body-font">
-        <div className="container px-5  py-24    mx-auto">
+        <div className="container px-5  py-12    mx-auto">
+      <h1 className="text-2xl  font-bold mt-1 mb-2 ">Featured Courses</h1>
           <div className="grid gap-4 grid-cols-1  md:grid-cols-2 lg:grid-cols-4 justify-center">
             {courses.map((course) => (
               <Link passHref={true} key={course._id} href={`/product/${course.slug}`}>
@@ -64,6 +68,9 @@ export default function Home({ courses }) {
           </div>
         </div>
       </section>
+      <hr className=" mx-60  mt-14 border-yellow-500" />
+
+      <Plan/>
 
     </>
   );
