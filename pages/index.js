@@ -37,6 +37,7 @@ export default function Home({ courses }) {
       <div>
         <Carousel/>
       </div>
+    
 
       <hr className=" mx-60  mt-14 border-yellow-500" />
 
@@ -47,17 +48,13 @@ export default function Home({ courses }) {
             {courses.map((course) => (
               <Link passHref={true} key={course._id} href={`/product/${course.slug}`}>
                 <div className="group border-spacing-2 rounded-lg border shadow-2xl overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
-                  <img
-                    src={course.img}
-                    alt=""
-                    className="w-full h-full object-fill"
-                    style={{ height: "12rem" }}
-                  />
+                  <img loading="lazy"  src={course.img}  alt=""  className="w-full h-full object-fill"  style={{ height: "12rem" }}/>
                   <div className="mt-4">
                     <h2 className="text-gray-900 px-1 title-font text-lg font-medium">{course.title}</h2>
                     <h4 className="text-gray-500 px-1 text-xs tracking-widest title-font mb-1">{course.brand}</h4>
                     <p className="mt-1 mb-1 px-1">₹{course.price}</p>
-                    <h4 className={`text-white ${course.tag ? 'bg-orange-600' : ''} inline-block pt-1 px-1 m-2 text-xs tracking-widest title-font`}>{course.tag}</h4>
+                    <span class={`${course.tag ? 'bg-yellow-500' : ''}  text-white px-3 py-1 tracking-widest text-xs absolute right-0 bottom-0 rounded-bl`}>{course.tag}</span>
+
                   </div>
                 </div>
               </Link>
@@ -76,13 +73,14 @@ export default function Home({ courses }) {
 
 export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
-    await mongoose.connect("mongodb://localhost:27017/he", {
+    await mongoose.connect("mongodb+srv://krishnajaswl:hello@cluster0.stbgcos.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
   }
 
   let courses = await Course.find();
+  console.log(courses);
 
   return {
     props: { courses: JSON.parse(JSON.stringify(courses)) }

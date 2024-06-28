@@ -14,6 +14,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
     const router = useRouter();
     const [sidebar,setSidebar]= useState(false)
    
+    const[useremail,setUseremail]=useState("");
     const toggleCart = () => {
         // if (ref.current.classList.contains("translate-x-full")) {
         //     ref.current.classList.remove("translate-x-full");
@@ -38,6 +39,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
         // console.log(name);
         const email = localStorage.getItem('email')
         // console.log(email);
+        setUseremail(email);
     }, [router.query])
     useEffect(()=>{
         if (SubTotal == 0) {
@@ -52,6 +54,12 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
     
         
     })
+    const handleClick = () => {
+        router.push({
+          pathname: '/mycourses',  // Path to Page B
+          query: { Email: useremail }, // Pass email as query parameter
+        });
+      };
 
     const ref = useRef()
 
@@ -60,16 +68,16 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
         <div >
             <header className=" body-font fixed w-full  z-10">
                 <div className=" text-gray-600 mx-auto flex flex-wrap  flex-col md:flex-row items-center shadow-xl sticky top-0 bg-white z-10">
-                    <a href="/" className="flex title-font p-1 font-medium items-center text-gray-900 mb-4 md:mb-0">
+                    <Link href="/" className="flex title-font p-1 font-medium items-center text-gray-900 mb-4 md:mb-0">
                         <Image src={logo} alt="" style={{ height: "4rem", width: "7rem" }}></Image>
 
                         <span className="ml-1 text-xl " style={{ color: "#F59E0B", fontFamily: "Georgia" }}>KnowledgeHub</span>
-                    </a>
+                    </Link>
                     <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                        <a href="/" className="mr-12   hover:text-gray-900" style={{ color: "#F59E0B"}}>Dashboard</a>
-                        <a href="/orders" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>Courses</a>
-                        <a href="/contact" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>Contact</a>
-                        <a href="/about" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>About</a>
+                        <Link href="/" className="mr-12   hover:text-gray-900" style={{ color: "#F59E0B"}}>Dashboard</Link>
+                        <Link href={`/mycourses`}  onClick={handleClick} className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>My Courses</Link>
+                        <Link href="/contact" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>Contact</Link>
+                        <Link href="/about" className="mr-12  hover:text-gray-900" style={{ color: "#F59E0B"}}>About</Link>
                     </nav>
 
                     <a onMouseOver={() => { setDropdown(true) }} onMouseLeave={() => { setDropdown(false) }} >

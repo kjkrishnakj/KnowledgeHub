@@ -21,14 +21,20 @@ type CartItem = {
 export default function App({ Component, pageProps }: AppProps) {
   const [cart, setCart] = useState<Record<string, CartItem>>({});
   const [subTotal, setSubTotal] = useState<number>(0);
-  const router = useRouter()
+  const router = useRouter()  
   const [user, setUser] = useState<{ value: string | null }>({ value: null });
-
+  const[email,setEmail]=useState("");
   const [key, setKey] = useState<number>()
   const [progress, setProgress] = useState(0)
   // const [email,setEmail]=useState<{ value: string | null }>({value: null})
   
+  useEffect(() => {
+        
+    
+    const email = localStorage.getItem('email')
   
+    setEmail(email);
+}, [router.query])
   useEffect(() => {
     // const em = localStorage.getItem('email')
     // setEmail(em)
@@ -126,7 +132,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <ToastContainer />
       {key && <Navbar logout={logout} user={user} key={key} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} ClearCart={clearCart} SubTotal={subTotal} />
-      }<Component buyNow={buyNow}  user={user} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} ClearCart={clearCart} SubTotal={subTotal} {...pageProps} />
+      }<Component buyNow={buyNow} email={email} user={user} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} ClearCart={clearCart} SubTotal={subTotal} {...pageProps} />
       <Footer />
 
       <Script src="https://kit.fontawesome.com/628fde244b.js"></Script>

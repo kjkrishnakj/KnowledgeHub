@@ -6,9 +6,8 @@ const connectDb = handler => async (req, res) => {
     }
 
     try {
-        await mongoose.connect("mongodb://localhost:27017/he", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        await mongoose.connect("mongodb+srv://krishnajaswl:hello@cluster0.stbgcos.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+    
         });
         console.log("MongoDB connected");
     } catch (error) {
