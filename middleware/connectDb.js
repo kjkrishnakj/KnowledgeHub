@@ -6,7 +6,7 @@ const connectDb = handler => async (req, res) => {
     }
 
     try {
-        await mongoose.connect("mongodb+srv://krishnajaswl:hello@cluster0.stbgcos.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+        await mongoose.connect("mongodb://localhost:27017/he", {
     
         });
         console.log("MongoDB connected");

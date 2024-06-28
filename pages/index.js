@@ -73,7 +73,7 @@ export default function Home({ courses }) {
 
 export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
-    await mongoose.connect("mongodb+srv://krishnajaswl:hello@cluster0.stbgcos.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+    await mongoose.connect("mongodb://localhost:27017/he", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
