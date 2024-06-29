@@ -21,7 +21,7 @@ function Mycourses({ mycourses }) {
   }, []);
 
   return (
-    <>
+    <div className=''>
       <div>
         <Head>
           <link href='https://fonts.googleapis.com/css?family=Nunito' />
@@ -34,7 +34,7 @@ function Mycourses({ mycourses }) {
           <h1 className="text-2xl font-bold mt-10 mb-2">My Courses</h1>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center">
             {mycourses.map((k) => (
-              <Link passHref={true} key={k._id} href={`/lectures/${k._id}`}>
+              <Link passHref={true} key={k._id} href={`/lectures/${k.title}`}>
                 <div className="group border-spacing-2 rounded-lg border shadow-2xl overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
                   <img loading="lazy"  src={k.img}  alt=""   className="w-full h-full object-fill"  style={{ height: "12rem" }}/>
                   <div className="mt-4">
@@ -48,7 +48,7 @@ function Mycourses({ mycourses }) {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 
