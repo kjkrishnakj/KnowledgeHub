@@ -48,12 +48,13 @@ export default function Home({ courses }) {
             {courses.map((course) => (
               <Link passHref={true} key={course._id} href={`/product/${course.slug}`}>
                 <div className="group border-spacing-2 rounded-lg border shadow-2xl overflow-hidden transform transition-transform duration-300 ease-in-out hover:scale-105">
-                  <img loading="lazy"  src={course.img}  alt=""  className="w-full h-full object-fill"  style={{ height: "12rem" }}/>
+                  <img loading="lazy"  src={course.img}  alt=""   className="w-full h-full object-fill"  style={{ height: "12rem" }}/>
                   <div className="mt-4">
                     <h2 className="text-gray-900 px-1 title-font text-lg font-medium">{course.title}</h2>
                     <h4 className="text-gray-500 px-1 text-xs tracking-widest title-font mb-1">{course.brand}</h4>
-                    <p className="mt-1 mb-1 px-1">₹{course.price}</p>
-                    <span class={`${course.tag ? 'bg-yellow-500' : ''}  text-white px-3 py-1 tracking-widest text-xs absolute right-0 bottom-0 rounded-bl`}>{course.tag}</span>
+                    <p className="mt-1  px-1 line-through text-gray-500 ">₹{course.price}</p>
+                    <p className=" mb-1 px-1">₹{course.price -Math.floor(Math.random() * (599 - 100 + 1)) + 100}</p>
+                    <span className={`${course.tag ? 'bg-yellow-500' : ''}  text-white px-3 py-1 tracking-widest text-xs absolute right-0 bottom-0 rounded-bl`}>{course.tag}</span>
 
                   </div>
                 </div>
@@ -80,7 +81,6 @@ export async function getServerSideProps(context) {
   }
 
   let courses = await Course.find();
-  console.log(courses);
 
   return {
     props: { courses: JSON.parse(JSON.stringify(courses)) }

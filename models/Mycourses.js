@@ -7,7 +7,6 @@ const MycourseSchema = new mongoose.Schema({
     slug: { type: String, required: true, unique: true },
     descr: { type: String, required: true },
     img: { type: String, required: true },
-    tags: { type: String },
 }, { timestamps: true });
 
 mongoose.models = {};
