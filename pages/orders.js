@@ -12,18 +12,20 @@ const Orders = () => {
     useEffect(() => {
 
         const fetchOrders = async () => {
-
-
-            let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
-            method: "POST",
+            const email = localStorage.getItem('email');
+            const token = localStorage.getItem('token');
+        
+            const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/myorders`, {
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ token: localStorage.getItem('token') })
-            })
-            let res = await a.json()
-            setOrders(res.orders);
-        }
+                body: JSON.stringify({ token, email })
+            });
+            const data = await response.json();
+            setOrders(data.orders);
+        };
+        
 
         if (!localStorage.getItem('token')) {
             router.push('/')

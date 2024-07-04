@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Head from 'next/head';
-import Script from 'next/script';
+
 
 
 const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, products }) => {
@@ -17,6 +17,8 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
   const [phone, setPhone] = useState('');
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
+  const [cid, setCid] = useState('');
+  
   const [address, setAddress] = useState('');
   const [pincode, setPincode] = useState('');
   const [disabled, setDisabled] = useState(true);
@@ -67,7 +69,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
     }
 
     else if (e.target.name == 'email') {
-      setEmail(e.target.value);
+      setEmail(localStorage.getItem('email'));
     }
 
     else if (e.target.name == 'address') {
@@ -118,6 +120,38 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 
   }
 
+  const addCourse = async (courseId) => {
+
+    try {
+      
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addcourse?email=${localStorage.getItem('email')}`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email,courseId })
+      });
+
+      const data = await response.json();
+      // console.log(data);
+
+      if (response.status ===200  && data.error === "Course already exist") {
+        toast.warning("Course already exists!", { autoClose: 2000, position: 'bottom-center' });
+      }
+      else if (response.ok) {
+        // console.log("Course added successfully:", data);
+        toast.success("Course added successfully✅", { autoClose: 1000, position: 'bottom-center' })
+
+      } 
+      else {
+        console.error("Error adding course:", data.error);
+      }
+    } catch (error) {
+      console.error("Error adding course:", error);
+    }
+
+  }
+
 
   const intiatePayment = async () => {
 
@@ -129,7 +163,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
     const data = { cart, SubTotal, oid, email: email, name, address, pincode, phone }
 
 
-    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransaction`, {
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/posttransaction`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -144,10 +178,10 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
         "root": "",
         "flow": "DEFAULT",
         "data": {
-          "orderId": oid, 
-          "token": txnToken,  
+          "orderId": oid,
+          "token": txnToken,
           "tokenType": "TXN_TOKEN",
-          "amount": SubTotal    
+          "amount": SubTotal
         },
         "handler": {
           "notifyMerchant": function (eventName, data) {
@@ -175,16 +209,11 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
   }
   return (
     <div>
+      <Head>
+
+        <title>KnowledgeHub | Checkout</title>
+      </Head>
       <ToastContainer />
-      <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
-      <title>KnowledgeHub | Checkout</title></Head>
-
-      <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} crossorigin="anonymous">
-
-      </Script>
-
-
-
       <div className="mb-6">
         <div className="flex flex-col mb-10 items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         </div>
@@ -205,6 +234,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
                       <img src={cart[k].img} alt="" className="m-2 h-24 w-28 rounded-md  object-fit object-center" style={{}}></img>
 
                       <div className="flex w-full flex-col px-4 py-4">
+                        
                         <div className="font-semibold">{cart[k].name}</div>
                         <div className="text-gray-500">{cart[k].variant}</div>
                         <p className="mt-auto text-lg font-bold">₹{cart[k].price}</p>
@@ -293,11 +323,11 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
             </div>}
             {/* <Link href={'/checkout'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-gray-600 rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button> */}
             {/* {(Object.keys(pincodes)).includes(pincode) ?
-              <Link href={'/orders'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-indigo-400  bg-indigo-600 border-0 rounded-md hover:bg-indigo-700 px-6 py-3 font-medium text-white">Place Order</button>
-              </Link> : <Link href={'/checkout'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-indigo-400  bg-indigo-600 border-0 rounded-md hover:bg-indigo-700 px-6 py-3 font-medium text-white">Place Order</button>
+              <Link href={'/orders'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-yellow-400  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
+              </Link> : <Link href={'/checkout'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-yellow-400  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
               </Link>  } */}
-              <Link href={'/orders'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-indigo-400  bg-indigo-600 border-0 rounded-md hover:bg-indigo-700 px-6 py-3 font-medium text-white">Place Order</button>
-              </Link>
+            <Link href={""}><button disabled={disabled} onClick={addCourse} className="mt-4 mb-8 w-full disabled:bg-yellow-300  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
+            </Link>
           </div>
         </div>
 
@@ -309,4 +339,3 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 }
 export default Checkout
 
- 

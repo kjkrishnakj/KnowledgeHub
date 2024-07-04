@@ -1,6 +1,6 @@
 import connectDb from "../../middleware/connectDb";
 import Order from "../../models/Order";
-import Product from "../../models/Product";
+import Course from "../../models/Course";
 
 const handler = async (req, res) => {
    let order;
@@ -9,7 +9,7 @@ const handler = async (req, res) => {
      let products =order.products
      for(let slug in products){
 
-        await Product.findOneandUpdate({slug:slug},{$inc:{"availableQty":-products[slug].qty}})
+        await Course.findOneandUpdate({slug:slug},{$inc:{"availableQty":-products[slug].qty}})
      } 
    } else if (req.body.STATUS == 'PENDING') {
       order = await Order.findOneAndUpdate({ orderId: req.body.ORDERID }, { status: "Pending", paymentInfo: JSON.stringify(req.body),transactionid:req.body.TXNID })

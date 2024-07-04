@@ -4,7 +4,7 @@ const MycourseSchema = new mongoose.Schema({
     brand: { type: String, required: true },
     email: { type: String, required: true },
     title: { type: String, required: true },
-    slug: { type: String, required: true, unique: true },
+    slug: { type: String },
     descr: { type: String, required: true },
     img: { type: String, required: true },
 }, { timestamps: true });
