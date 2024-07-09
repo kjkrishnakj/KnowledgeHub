@@ -98,7 +98,7 @@ const Navbar = ({ logout, user, cart, addToCart, removeFromCart, ClearCart, SubT
                                 </div>
                                 <hr />
                                 <Link href="/myaccount"><li className="cursor-pointer py-1 pt-3 dark:text-white hover:text-indigo-200 text-sm" >My Account</li></Link>
-                                <Link href="/orders"><li className="cursor-pointer py-1 dark:text-white hover:text-indigo-200 text-sm" >Orders</li></Link>
+                                {/* <Link href="/orders"><li className="cursor-pointer py-1 dark:text-white hover:text-indigo-200 text-sm" >Orders</li></Link> */}
                                 <li onClick={logout} className="cursor-pointer py-1 pb-3 dark:text-white hover:text-indigo-200 text-sm" >Logout</li>
                             </ul>
                         </div>

@@ -1,8 +1,15 @@
 import React from 'react'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Plan() {
+    const handleSubscribe=async()=>{
+        toast.warning("we are still working on this part",{autclose:100 ,position:"bottom-center"})
+
+    }
     return (
         <div>
+            <ToastContainer/>
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-1 mx-auto">
                     <div className="flex flex-col text-center w-full mb-20">
@@ -35,7 +42,7 @@ function Plan() {
                                         </svg>
                                     </span>Basic analytics
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
+                                <button onClick={handleSubscribe} className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
                                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
@@ -79,7 +86,7 @@ function Plan() {
                                         </svg>
                                     </span>Certificate of completion
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-yellow-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-yellow-600 rounded">Subscribe
+                                <button onClick={handleSubscribe} className="flex items-center mt-auto text-white bg-yellow-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-yellow-600 rounded">Subscribe
                                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
@@ -129,7 +136,7 @@ function Plan() {
                                         </svg>
                                     </span>One-on-one mentoring sessions
                                 </p>
-                                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
+                                <button onClick={handleSubscribe} className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">Subscribe
                                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>

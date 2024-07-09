@@ -66,7 +66,7 @@ const Post = ({ addToCart, error, course, buyNow, relevantCourses }) => {
                 <ToastContainer />
                 <div className="container px-5 py-14 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <img src={course.img} alt="" className="shadow-2xl border border-yellow-500 border-4 rounded-lg" style={{ height: "16rem", width: "25rem", margin: "5rem 0rem" }}></img>
+                        <img src={course.img} alt="" className="shadow-2xl border border-yellow-500 border-4 rounded-lg" style={{ height: "16rem", width: "25rem", margin: "auto" }}></img>
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             <h2 className="text-sm title-font text-gray-500 tracking-widest"> </h2>
                             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1"> {course.title}</h1>
@@ -108,18 +108,15 @@ const Post = ({ addToCart, error, course, buyNow, relevantCourses }) => {
                                 <button onClick={() => { addToCart(slug,course._id, 1, course.price, course.title, course.color, course.img) }} disabled={course.availableQty <= 0 ? true : false} className="flex ml-4 disabled:bg-yellow-500 text-white bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-700 rounded">Add to Cart</button>
                                
                             </div>
-                            <div className="pin my-5 flex">
-                                <input type="text" onChange={onChangepin} placeholder='Enter Pincode' className=" flex px-2 border-2 border-yellow-500  rounded-lg" />
-                                <button onClick={checkService} className="flex ml-2 text-white bg-yellow-400 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-500 rounded">Check</button>
-
+                    <h1 className="text-xl   mt-2 text-gray-900  font-bold mt-8 mb-2">Details:</h1>
+                    <li className= ' mt-2 text-gray-900  pl-10'>Title: {course.title}</li>
+                    <li className= ' mt-2 text-gray-900 pl-10'>Faculty: {course.brand}</li>
+                    <li className= ' mt-2 text-gray-900 pl-10'>Duration: 30-Days</li>
+                    <li className= ' mt-2 text-gray-900 pl-10'>Enrolments: {Math.floor(Math.random() * (599 - 100 + 1)) + 100}</li>
+                            
+                            <div>
+                                
                             </div>
-                            {!service && service != null && <div className='text-red-900 text-sm mt-3'>
-                                Sorry! We do not deliver to this pincode
-                            </div>}
-
-                            {service && service != null && <div className='text-green-900 text-sm mt-3'>
-                                Yay! This pincode is serviceable
-                            </div>}
                         </div>
                     </div>
                 </div>

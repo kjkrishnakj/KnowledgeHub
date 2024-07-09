@@ -36,7 +36,7 @@ export default function Home({ courses }) {
 
       <div>
         <Carousel/>
-      </div>
+      </div>  
     
 
       <hr className=" mx-60  mt-14 border-yellow-500" />
