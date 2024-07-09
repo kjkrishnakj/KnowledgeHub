@@ -104,18 +104,18 @@ const Post = ({ addToCart, error, course, buyNow, relevantCourses }) => {
                             <div className="flex">
                                 {course.availableQty <= 0 ? <span className="title-font font-medium text-2xl text-gray-900">Out Of Stock!</span> :
                                     <span className="title-font font-medium text-2xl text-gray-900">₹{course.price}</span>}
-                                <button onClick={() => { buyNow(slug,course._id, 1, course.price, course.title, course.color, course.img) }} disabled={course.availableQty <= 0 ? true : false} className="flex ml-10 disabled:bg-yellow-500 text-white  bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-700 rounded">Buy now</button>
-                                <button onClick={() => { addToCart(slug,course._id, 1, course.price, course.title, course.color, course.img) }} disabled={course.availableQty <= 0 ? true : false} className="flex ml-4 disabled:bg-yellow-500 text-white bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-700 rounded">Add to Cart</button>
-                               
+                                <button onClick={() => { buyNow(slug, course._id, 1, course.price, course.title, course.color, course.img) }} disabled={course.availableQty <= 0 ? true : false} className="flex ml-10 disabled:bg-yellow-500 text-white  bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-700 rounded">Buy now</button>
+                                <button onClick={() => { addToCart(slug, course._id, 1, course.price, course.title, course.color, course.img) }} disabled={course.availableQty <= 0 ? true : false} className="flex ml-4 disabled:bg-yellow-500 text-white bg-yellow-400 border-0 py-2 px-2 focus:outline-none hover:bg-yellow-700 rounded">Add to Cart</button>
+
                             </div>
-                    <h1 className="text-xl   mt-2 text-gray-900  font-bold mt-8 mb-2">Details:</h1>
-                    <li className= ' mt-2 text-gray-900  pl-10'>Title: {course.title}</li>
-                    <li className= ' mt-2 text-gray-900 pl-10'>Faculty: {course.brand}</li>
-                    <li className= ' mt-2 text-gray-900 pl-10'>Duration: 30-Days</li>
-                    <li className= ' mt-2 text-gray-900 pl-10'>Enrolments: {Math.floor(Math.random() * (599 - 100 + 1)) + 100}</li>
-                            
+                            <h1 className="text-xl   mt-2 text-gray-900  font-bold mt-8 mb-2">Details:</h1>
+                            <li className=' mt-2 text-gray-900  pl-10'>Title: {course.title}</li>
+                            <li className=' mt-2 text-gray-900 pl-10'>Faculty: {course.brand}</li>
+                            <li className=' mt-2 text-gray-900 pl-10'>Duration: 30-Days</li>
+                            <li className=' mt-2 text-gray-900 pl-10'>Enrolments: {Math.floor(Math.random() * (599 - 100 + 1)) + 100}</li>
+
                             <div>
-                                
+
                             </div>
                         </div>
                     </div>
