@@ -1,4 +1,4 @@
-import connectDb from "../../middleware/mongoose";
+import connectDb from "../../middleware/connectDb";
 import User from "../../models/User";
 
 
