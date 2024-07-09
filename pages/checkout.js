@@ -107,7 +107,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 
     setTimeout(() => {
 
-      if (name.length > 3 && address.length > 3 && pincode.length > 3 && phone.length > 3) {
+      if (name.length > 3 && phone.length > 3) {
         setDisabled(false)
         // toast.error("Please fill the details", { autoClose: 1000 })
 
