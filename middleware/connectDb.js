@@ -6,9 +6,7 @@ const connectDb = handler => async (req, res) => {
     }
 
     try {
-        await mongoose.connect("mongodb://localhost:27017/he", {
-    
-        });
+        await mongoose.connect(process.env.MONGO_URI);
         console.log("MongoDB connected");
     } catch (error) {
         console.error("MongoDB connection error:", error);

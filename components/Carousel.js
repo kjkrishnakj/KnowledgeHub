@@ -33,7 +33,7 @@ const Carousel = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative pt-16 w-full" data-carousel="slide">
+    <div className="relative pt-30 w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         {images.map((img, index) => (
           <div

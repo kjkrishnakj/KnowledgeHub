@@ -120,16 +120,16 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 
   }
 
-  const addCourse = async (courseId) => {
+  const addCourse = async () => {
 
     try {
-      
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addcourse?email=${localStorage.getItem('email')}`, {
+      const cname = localStorage.getItem('item');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addcourse?email=${localStorage.getItem('email')}&item=${localStorage.getItem('item')}`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email,courseId })
+        body: JSON.stringify({ email,cname })
       });
 
       const data = await response.json();
@@ -233,10 +233,10 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 
                       <img src={cart[k].img} alt="" className="m-2 h-24 w-28 rounded-md  object-fit object-center" style={{}}></img>
 
+                        {localStorage.setItem('item',JSON.stringify(cart[k].id))}
                       <div className="flex w-full flex-col px-4 py-4">
-                        
                         <div className="font-semibold">{cart[k].name}</div>
-                        <div className="text-gray-500">{cart[k].variant}</div>
+                        <div className="text-gray-500">{cart[k].id}</div>
                         <p className="mt-auto text-lg font-bold">₹{cart[k].price}</p>
                       </div>
 

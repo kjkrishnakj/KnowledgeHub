@@ -10,7 +10,7 @@ import Plan from "../components/Plan";
 export default function Home({ courses }) {
   const fetchCourses = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/getcourses');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getcourses`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -74,10 +74,7 @@ export default function Home({ courses }) {
 
 export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {
-    await mongoose.connect("mongodb://localhost:27017/he", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI);
   }
 
   let courses = await Course.find();

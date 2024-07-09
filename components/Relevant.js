@@ -35,10 +35,7 @@ function Relevant({courses}) {
 }
 export async function getServerSideProps(context) {
     if (!mongoose.connections[0].readyState) {
-      await mongoose.connect("mongodb://localhost:27017/he", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+      await mongoose.connect(process.env.MONGO_URI);
     }
   
     let courses = await Course.find();

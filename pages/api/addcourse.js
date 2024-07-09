@@ -1,39 +1,44 @@
 import connectDb from "../../middleware/connectDb";
 import MyCourses from "../../models/MyCourses";
-import jsonwebtoken from "jsonwebtoken";
 import Course from "../../models/Course"; 
-const handler = async (req, res) => {
-    const { courseId } = req.body;
-    const { email } = req.query;
+import jsonwebtoken from "jsonwebtoken";
+import mongoose from "mongoose";
 
-    // console.log("email + "   ,courseId);
-    // const courseId  = "667845cdb9cb890eef867133";
- 
-        // console.log(courseId);
+const handler = async (req, res) => {
+    // const { item } = req.body; // Assuming item is passed in the request body
+    const { email, item } = req.query;
+
+
+    try {
         if (!email) {
             return res.status(400).json({ error: "Email is required" });
         }
-        
-        const course = await Course.findById(courseId);
+        console.log("id= ",item);
+        const itemId = new mongoose.Types.ObjectId(item);
+        const course = await Course.findById(itemId);
 
-        if (course) {
-            return res.status(200).json({ error: "Course already exist" });
-            
+        if (!course) {
+            return res.status(404).json({ error: "Course not found" });
         }
-    
+
         const myCourse = new MyCourses({
             brand: course.brand,
             email: email,
             title: course.title,
-            slug:Date.now().toString(36),
+            slug: Date.now().toString(36),
             descr: course.descr,
             img: course.img,
         });
-        console.log(myCourse.email);
+
+        // Save MyCourses object to MongoDB
         await myCourse.save();
 
+        // Respond with success message
         res.status(200).json({ message: "Course added successfully" });
-     
+    } catch (error) {
+        console.error("Error adding course:", error);
+        res.status(500).json({ error: "Server error" }); // Generic server error response
+    }
 };
 
 export default connectDb(handler);

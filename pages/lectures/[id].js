@@ -66,7 +66,7 @@ const Post = ({ error, lecture, thumb, course }) => {
 
 export async function getServerSideProps(context) {
     if (!mongoose.connections[0].readyState) {
-        await mongoose.connect("mongodb://localhost:27017/he")
+        await mongoose.connect(process.env.MONGO_URI)
     }
 
     let lecture = await Lecture.find({ title: context.query.id });
