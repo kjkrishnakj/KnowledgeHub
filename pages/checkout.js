@@ -237,7 +237,6 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
                         {localStorage.setItem('item',(cart[k].name))}
                       <div className="flex w-full flex-col px-4 py-4">
                         <div className="font-semibold">{cart[k].name}</div>
-                        <div className="text-gray-500">{cart[k].brand}</div>
                         <p className="mt-auto text-lg font-bold">₹{cart[k].price}</p>
                       </div>
 
