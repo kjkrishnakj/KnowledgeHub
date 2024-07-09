@@ -123,22 +123,23 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
   const addCourse = async () => {
 
     try {
-      const cname = localStorage.getItem('item');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addcourse?email=${localStorage.getItem('email')}&item=${localStorage.getItem('item')}`, {
+
+      const item = localStorage.getItem('item');
+      const email = localStorage.getItem('email');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addcourse`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email,cname })
+        body: JSON.stringify({ email,item })
       });
 
       const data = await response.json();
-      // console.log(data);
-
-      if (response.status ===200  && data.error === "Course already exist") {
+      if (response.status ==201) {
         toast.warning("Course already exists!", { autoClose: 2000, position: 'bottom-center' });
       }
-      else if (response.ok) {
+
+      else if (response==200) {
         // console.log("Course added successfully:", data);
         toast.success("Course added successfully✅", { autoClose: 1000, position: 'bottom-center' })
 
@@ -233,7 +234,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
 
                       <img src={cart[k].img} alt="" className="m-2 h-24 w-28 rounded-md  object-fit object-center" style={{}}></img>
 
-                        {localStorage.setItem('item',JSON.stringify(cart[k].id))}
+                        {localStorage.setItem('item',(cart[k].name))}
                       <div className="flex w-full flex-col px-4 py-4">
                         <div className="font-semibold">{cart[k].name}</div>
                         <div className="text-gray-500">{cart[k].id}</div>
@@ -326,7 +327,7 @@ const Checkout = ({ user, cart, addToCart, removeFromCart, ClearCart, SubTotal, 
               <Link href={'/orders'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-yellow-400  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
               </Link> : <Link href={'/checkout'}><button disabled={disabled} onClick={intiatePayment} className="mt-4 mb-8 w-full disabled:bg-yellow-400  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
               </Link>  } */}
-            <Link href={""}><button disabled={disabled} onClick={addCourse} className="mt-4 mb-8 w-full disabled:bg-yellow-300  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
+            <Link href={"/mycourses"}><button disabled={disabled} onClick={addCourse} className="mt-4 mb-8 w-full disabled:bg-yellow-300  bg-yellow-600 border-0 rounded-md hover:bg-yellow-700 px-6 py-3 font-medium text-white">Place Order</button>
             </Link>
           </div>
         </div>

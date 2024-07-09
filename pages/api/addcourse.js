@@ -1,25 +1,32 @@
 import connectDb from "../../middleware/connectDb";
-import MyCourses from "../../models/MyCourses";
+import MyCourses from "../../models/Mycourses";
 import Course from "../../models/Course"; 
-import jsonwebtoken from "jsonwebtoken";
 import mongoose from "mongoose";
+import Mycourses from "../../models/Mycourses";
 
 const handler = async (req, res) => {
-    // const { item } = req.body; // Assuming item is passed in the request body
-    const { email, item } = req.query;
-
+    const { email } = req.body;
+    const {item} = req.body;
 
     try {
         if (!email) {
             return res.status(400).json({ error: "Email is required" });
         }
-        console.log("id= ",item);
-        const itemId = new mongoose.Types.ObjectId(item);
-        const course = await Course.findById(itemId);
-
+        
+        // console.log("email = ",email);
+        // console.log("title = ",item);
+        // console.log(course);
+        const course = await Course.findOne({title:item});
+        const checkcourse = await Mycourses.findOne({title:item});
+        
         if (!course) {
             return res.status(404).json({ error: "Course not found" });
         }
+        if(checkcourse){
+            return res.status(201).json({ error: "Course already exist" });
+        }
+
+        else{
 
         const myCourse = new MyCourses({
             brand: course.brand,
@@ -30,14 +37,12 @@ const handler = async (req, res) => {
             img: course.img,
         });
 
-        // Save MyCourses object to MongoDB
         await myCourse.save();
 
-        // Respond with success message
-        res.status(200).json({ message: "Course added successfully" });
+        res.status(200).json({ message: "Course added successfully" });}
     } catch (error) {
         console.error("Error adding course:", error);
-        res.status(500).json({ error: "Server error" }); // Generic server error response
+        res.status(500).json({ error: "Server error" });  
     }
 };
 
